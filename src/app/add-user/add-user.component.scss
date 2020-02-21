@@ -1,0 +1,48 @@
+.adduser {
+    position: absolute;
+    width: 60%;
+    height: 629px;
+    left: 34%;
+    top: 118px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding-top: 29px;
+    flex {
+        display: flex;
+    }
+    .champ {
+        margin-top: 25px;
+        .fas {
+            position: absolute;
+            margin-top: -50px;
+            left: 12%;
+            color: black;
+        }
+    }
+    input {
+        width: 80%;
+        height: 37px;
+        background: #C4C4C4;
+        border-radius: 24px;
+        margin: 25px auto;
+        text-align: center;
+    }
+    .input2 {
+        width: 80%;
+        height: 37px;
+        margin: 25px auto;
+    }
+    .label {
+        color: black;
+        position: relative;
+        top: 39px;
+        left: -39px;
+    }
+    .btn {
+        position: relative;
+        width: 80%;
+        height: 37px;
+        margin: 35px auto;
+        left: 11%;
+    }
+}

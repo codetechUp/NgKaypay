@@ -1,0 +1,21 @@
+<div class="form-login form-group">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="input1">
+            <input type="text" class="form-control" formControlName="username" placeholder="Username">
+            <i class="fas fa-user"></i>
+        </div>
+        <div class="input2">
+            <input type="password" class="form-control" formControlName="password" name="password" placeholder="Password">
+            <i class="fas fa-lock"></i>
+        </div>
+        <div>
+            <button class='send btn btn-success'>Se Connecter</button>
+        </div>
+        <div *ngIf='error' class="alert-danger">{{ error }}</div>
+    </form>
+
+
+
+
+
+</div>

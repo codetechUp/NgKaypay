@@ -1,0 +1,26 @@
+div.ang {
+    display: flexbox;
+    .userToModi {
+        position: absolute;
+        background-color: white;
+        left: 28%;
+        width: 67%;
+        top: 25%;
+        border-radius: 24px;
+        height: 100px;
+        margin-top: 20px;
+        position: relative;
+        h4 {
+            position: relative;
+            color: black;
+            top: 25px;
+        }
+    }
+}
+
+img.image {
+    position: relative;
+    width: 28%;
+    left: 18px;
+    height: 20px;
+}

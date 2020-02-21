@@ -1,0 +1,65 @@
+.form-login {
+    position: absolute;
+    width: 900px;
+    height: 500px;
+    left: 280px;
+    top: 158px;
+    background: #FFF9F9;
+    border-radius: 24px;
+}
+
+input {
+    position: absolute;
+    width: 675px;
+    height: 45px;
+    left: 110px;
+    top: 100px;
+    background: #C4C4C4;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.input2 {
+    position: absolute;
+    left: 0px;
+    top: 111px;
+}
+
+button.send {
+    position: absolute;
+    width: 675px;
+    height: 37px;
+    left: 110px;
+    top: 345px;
+    background: #309740;
+    border-radius: 24px;
+    color: white;
+}
+
+.fas.fa-user {
+    /* fa-solid:user */
+    position: absolute;
+    width: 39px;
+    height: 39px;
+    left: 125px;
+    top: 110px;
+    color: black;
+    font-size: 1.2em;
+}
+
+.fas.fa-lock {
+    /* fa-solid:user */
+    position: absolute;
+    width: 39px;
+    height: 39px;
+    left: 125px;
+    top: 111px;
+    color: black;
+    font-size: 1.2em;
+}
+
+::placeholder {
+    position: relative;
+    left: -225px;
+    font-size: 15px;
+}
