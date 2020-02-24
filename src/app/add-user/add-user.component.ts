@@ -19,6 +19,7 @@ export class AddUserComponent implements OnInit {
   constructor(private roles:RoleService,private formBuilder:FormBuilder,private UserService:UserService) { }
 
   ngOnInit() {
+    //Au chargement de la Je recuppere les roles
     this.role =this.roles.getRoles().pipe(map((array) => array.filter(role => role.libelle != "ROLE_ADMIN_SYST"))).subscribe(
       data=>{
         console.log(data);
@@ -45,9 +46,10 @@ export class AddUserComponent implements OnInit {
   get f() { return this.registerForm.controls; }
   onSubmit()
   {
+    //Je change la valeur de id role en iri c-a-d ∕api∕roles/{id}
     this.f.role.setValue(`${this.iri}${this.f.role.value}`);
 
-    
+    //Je creer le nouveau utilisateur
       this.UserService.register(this.registerForm.value)
       .subscribe(
         data=>{

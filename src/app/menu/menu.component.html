@@ -3,10 +3,9 @@
     <img [src]="thumbnail" alt="profil" class="profil">
     <div class="nom">{{ prenom }} - {{ nom }}</div>
     <nav>
+        <li><a [routerLink]="['/adduser']"><i class="fas fa-user"></i>Creer Utilisateur<i class="fas fa-arrow-right"></i></a></li>
 
-        <li><a href=""><i class="fas fa-user"></i>Creer Utilisateur<i class="fas fa-arrow-right"></i></a></li>
-
-        <li><a href=""><i class="fas fa-user-edit"></i>Modifier <i class="fas fa-arrow-right"></i></a></li>
+        <li><a [routerLink]="['/liste']"><i class="fas fa-user-edit"></i>Modifier <i class="fas fa-arrow-right"></i></a></li>
 
         <li><a href=""><i class="fas fa-wallet"></i>Faire Depot <i class="fas fa-arrow-right"></i></a></li>
     </nav>

@@ -1,7 +1,12 @@
 <app-menu></app-menu>
-<div class="ang">
-    <div class="userToModi" *ngFor="let user of users">
-        <img src="../assets/images/image1.png" class="image" alt="">
-        <h4>{{ user.nom }}{{ user.prenom }}</h4>
+<input type="text" [(ngModel)]="query" class="form-control search" placeholder="rechercher par username">
+<div class="ang mt-3">
+    <div class="userToModi" *ngFor="let user of users| filter:query| paginate: { itemsPerPage: 6, currentPage: p } ">
+        <img [src]="getImage(user)" class="image">
+        <mat-slide-toggle [(ngModel)]="isActive" class="bg-light" color="green"></mat-slide-toggle>
+        <span class="isActive">{{ getIsActive(user) }}</span>
+        <h4>{{ user.prenom }}--{{ user.nom }}</h4>
+        <h6>@{{ user.username}}</h6>
     </div>
 </div>
+<pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>

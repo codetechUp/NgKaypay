@@ -10,7 +10,7 @@ import { User } from '../models/user.models';
 })
 export class AuthService {
  
-idUser;
+idUser:number;
   constructor(private httpClient:HttpClient) { }
 
 
@@ -21,12 +21,6 @@ idUser;
   }
   getToken(){
     return localStorage.getItem("token");
-  }
-  getUsername(){
-    
-      //console.log(decodedToken);
-      //return decodedToken.username;
-      
   }
   getCurrentUser(){
     const helper = new JwtHelperService();

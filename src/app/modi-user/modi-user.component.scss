@@ -1,26 +1,77 @@
 div.ang {
+    position: absolute;
+    left: 27%;
     display: flexbox;
+    margin: 20px;
+    margin-top: 19px;
     .userToModi {
-        position: absolute;
-        background-color: white;
-        left: 28%;
-        width: 67%;
-        top: 25%;
-        border-radius: 24px;
-        height: 100px;
-        margin-top: 20px;
         position: relative;
-        h4 {
-            position: relative;
-            color: black;
-            top: 25px;
-        }
+        width: 80%;
+        height: 80px;
+        background-color: white;
+        margin-top: 28px;
+        border-radius: 24px;
+    }
+    img.image {
+        position: relative;
+        width: 14.5%;
+        height: 66px;
+        border-radius: 50%;
+        left: 2.5%;
+        top: 5px;
+    }
+    h6 {
+        position: relative;
+        color: gray;
+        top: -53px;
+        left: 20%;
+    }
+    h4 {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21px;
+        position: relative;
+        color: black;
+        top: -45px;
+        left: 20%;
+    }
+    mat-slide-toggle {
+        position: relative;
+        left: 66%;
+        top: 20px;
+        color: black !important;
+        width: 30px;
+        height: 15px;
+        border-radius: 12px;
+        background-color: rgba(255, 0, 0)!important;
     }
 }
 
-img.image {
+.isActive {
     position: relative;
-    width: 28%;
-    left: 18px;
-    height: 20px;
+    left: 68%;
+    top: 20px;
+    color: black !important;
+}
+
+pagination-controls {
+    position: absolute;
+    width: 500px;
+    height: 40px;
+    top: 90%;
+    left: 39%;
+    padding: 0;
+}
+
+.mat-slide-toggle-bar {
+    background-color: red !important;
+}
+
+.search {
+    position: absolute;
+    left: 80%;
+    top: 10px;
+    width: 266px;
+    height: 30px;
 }

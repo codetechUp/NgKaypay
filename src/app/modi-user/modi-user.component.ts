@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { User } from '../models/user.models';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-modi-user',
@@ -10,10 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class ModiUserComponent implements OnInit {
   users;
+ query;
+ isActive:boolean;
 
   constructor(private userService:UserService) { }
 
   ngOnInit() {
+    //je recuppere tout les users
     this.userService.getAll()
     .subscribe(
       data => {
@@ -25,6 +27,19 @@ export class ModiUserComponent implements OnInit {
       }
       
     )
+
+  }
+  //Fonction permet de recupperer l'image à partir d'un USER
+  getImage(user){
+    return this.userService.getThumbnail(user);
+  }
+  getIsActive(user){
+    let active=user.isActive;
+    if(active == "true"){
+      return  "Déactivé";
+    }else{
+      return  "Activé";
+    }
 
   }
 

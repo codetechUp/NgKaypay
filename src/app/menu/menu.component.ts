@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,7 @@ export class MenuComponent implements OnInit {
   thumbnail;
   nom:string;
 
-  constructor(private auth:AuthService, private sanitizer: DomSanitizer) {
+  constructor(private auth:AuthService,private UserService:UserService) {
    
    }
 
@@ -20,10 +21,9 @@ export class MenuComponent implements OnInit {
     this.auth.getCurrentUser()
     .subscribe(
       data=>{
-        console.log(data);
-       let objectURL = 'data:image/jpeg;base64,' + data.image;
-
-       this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
+        //recupperation de l'image
+        this.thumbnail=this.UserService.getThumbnail(data);
+       
        this.prenom=data.nom;
        this.nom=data.prenom;
 
