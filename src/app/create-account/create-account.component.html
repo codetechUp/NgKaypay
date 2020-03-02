@@ -1,0 +1,76 @@
+<form class="v" [formGroup]="form">
+    <div class="row " formGroupName="partenaire">
+        <div class="col-lg-6 ">
+            <!-- Form Basic -->
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Donnees Partenaire</h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Ninea du Partenaire</label>
+                        <input type="text" class="form-control" formControlName="ninea" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ninea du Partenaire">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Registre de Commerce</label>
+                        <input type="text" class="form-control" formControlName="rc" id="exampleInputPassword1" placeholder="Registre de Commerce">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <!-- General Element -->
+            <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Donnees utilisateur</h6>
+                </div>
+                <div class="card-body">
+                    <div formGroupName="users">
+                        <div class="form-group">
+                            <label>Prenom</label>
+                            <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter First Name" formControlName="prenom">
+                        </div>
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input type="text" class="form-control" id="exampleInputLastName" placeholder="Enter Last Name" formControlName="nom">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." formControlName="email">
+                        </div>
+                        <div class="form-group">
+                            <label>password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" formControlName="password">
+                        </div>
+                        <div class="form-group">
+                            <label>username</label>
+                            <input type="username" class="form-control" id="exampleInputusername" placeholder="username" formControlName="username">
+                        </div>
+                        <div class="form-group">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Input Group -->
+        </div>
+    </div>
+    <div class="col-lg-6 z">
+        <div class="login-form card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Donnees Depot</h6>
+            </div>
+            <div>
+                <div class="form-group" formGroupName="depots">
+                    <label for="exampleInputEmail1">Montant Depot</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Montant" formControlName="montant">
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-block" (click)="create()">Creer Compte Partenaire</button>
+
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormBuilder,Validators, FormControl } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { RoleService } from '../services/role.service';
 import { filter ,map} from 'rxjs/operators';
+import { User } from '../models/user.models';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class AddUserComponent implements OnInit {
   role;
   iri=`/api/roles/`;
 
-  constructor(private roles:RoleService,private formBuilder:FormBuilder,private UserService:UserService) { }
+  constructor(private roles:RoleService,private router:Router,private UserService:UserService) { }
 
   ngOnInit() {
     //Au chargement de la Je recuppere les roles
@@ -26,35 +28,29 @@ export class AddUserComponent implements OnInit {
         this.role=data;
       }
     );
-    
-    
-    
-
-
-
-
-    this.registerForm=this.formBuilder.group({
-      password: ['', Validators.required],
-      email:['', Validators.required],
-      role:['', Validators.required],
-      prenom:['', Validators.required],
-      nom:['', Validators.required],
-      username : ['', Validators.required]
-  });
+    this.registerForm = new FormGroup({
+      prenom: new FormControl(''),
+      nom: new FormControl(''),
+      username: new FormControl(''),
+      password: new FormControl(''),
+      email: new FormControl(''),
+      role: new FormControl(''),
+    });
   }
   //Pour recupperer les champs facilement
   get f() { return this.registerForm.controls; }
-  onSubmit()
+  createUser()
   {
     //Je change la valeur de id role en iri c-a-d ∕api∕roles/{id}
-    this.f.role.setValue(`${this.iri}${this.f.role.value}`);
+    console.log(this.registerForm.value.role);
+    this.registerForm.value.role=`${this.iri}${this.f.role.value}`;
 
     //Je creer le nouveau utilisateur
       this.UserService.register(this.registerForm.value)
       .subscribe(
         data=>{
           console.log(data);
-  
+          this.router.navigateByUrl("modiuser");
         },
         error=>{
           console.log(error);

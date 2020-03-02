@@ -1,3 +1,53 @@
-<body>
-    <router-outlet></router-outlet>
-</body>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul [hidden]="!auth" class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon">
+            </div>
+            <div class="sidebar-brand-text mx-3">KAYPAY</div>
+        </a>
+        <hr class="sidebar-divider my-0">
+        <div class="sidebar-heading">
+            Dashbord
+        </div>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/adduser']">
+                <i class="fa-fw fas fa-user"></i>
+                <span>Creer utilisateurs</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/liste']">
+                <i class="fa-fw fas fa-users-cog"></i>
+                <span>Modifier utilisateurs</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item">
+            <a class="nav-link">
+                <i class="fa-fw fas fa-plus-circle"></i>
+                <span>Creer Compte Partenaire</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider my-0">
+        <div class="version" id="version-ruangadmin"></div>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <!-- TopBar -->
+            <app-menu *ngIf="auth" class="topbar "></app-menu>
+            <!-- Topbar -->
+
+            <!-- Container Fluid-->
+            <div class="container-fluid " id="container-wrapper ">
+                <router-outlet>
+                </router-outlet>
+            </div>
+            <!---Container Fluid-->
+        </div>
+        <!-- Footer -->
+        <!-- Footer -->
+    </div>
+</div>

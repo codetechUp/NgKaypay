@@ -1,33 +1,55 @@
-<app-menu></app-menu>
-<div class="adduser">
-    <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <div class="champ">
-            <input type="text " class="form-control " placeholder="Prenom" formControlName="prenom">
-            <i class="fas fa-user-secret "></i>
-        </div>
-        <div class="champ ">
-            <input type="text " class="form-control " placeholder="Nom" formControlName="nom">
-            <i class="fas fa-user "></i>
-        </div>
-        <div class="champ ">
-            <input type="text " class="form-control " placeholder="Username" formControlName="username">
-            <i class="fas fa-address-card "></i>
-        </div>
-        <div class="champ ">
-            <input type="text " class="form-control " placeholder="Email" formControlName="email">
-            <i class="fas fa-lock "></i>
-        </div>
-        <div class="champ ">
-            <input type="text " class="form-control " placeholder="Password " formControlName="password">
-            <i class="fas fa-lock "></i>
-        </div>
-        <div class="input2 ">
-            <label for="role " class="label ">Role</label>
-            <select class="form-control " id="sel1 " formControlName="role">
-                  <option  *ngFor="let role of role"  [value]="role.id">{{ role.libelle }}</option>
-                </select>
-        </div>
-        <button class="btn btn-success ">Creer utilisateur</button>
+<div class="container-login v">
+    <div class="row justify-content-center">
+        <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="card shadow-sm my-5">
+                <div class="card-body p-0">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="login-form">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Creer utilisateur</h1>
+                                </div>
+                                <form [formGroup]="registerForm">
+                                    <div class="form-group">
+                                        <label>Prenom</label>
+                                        <input type="text" class="form-control" id="exampleInputFirstName" placeholder="Enter First Name" formControlName="prenom">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <input type="text" class="form-control" id="exampleInputLastName" placeholder="Enter Last Name" formControlName="nom">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." formControlName="email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" formControlName="password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>username</label>
+                                        <input type="username" class="form-control" id="exampleInputusername" placeholder="username" formControlName="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Role</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" formControlName="role">
+                                                <option  *ngFor="let role of role"  [value]="role.id">{{ role.libelle }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-block" (click)="createUser()">Creer utilisateur</button>
+                                    </div>
 
-    </form>
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Register Content -->

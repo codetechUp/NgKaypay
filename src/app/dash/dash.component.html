@@ -1,0 +1,121 @@
+<ul *ngIf="user" class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+        </div>
+        <div class="sidebar-brand-text mx-3">KAYPAY</div>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <div class="sidebar-heading">
+        Dashbord
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/adduser']">
+            <i class="fa-fw fas fa-user"></i>
+            <span>Creer utilisateurs</span>
+        </a>
+    </li>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/liste']">
+            <i class="fa-fw fas fa-users-cog"></i>
+            <span>Modifier utilisateurs</span>
+        </a>
+    </li>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item">
+        <a class="nav-link">
+            <i class="fa-fw fas fa-plus-circle"></i>
+            <span>Creer Compte Partenaire</span>
+        </a>
+    </li>
+    <hr class="sidebar-divider my-0">
+    <div class="version" id="version-ruangadmin"></div>
+</ul>
+<!-- Sidebar -->
+<div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+        <!-- TopBar -->
+        <app-menu *ngIf="user" class="topbar "></app-menu>
+        <!-- Topbar -->
+        <div class="row mb-3 o">
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Earnings (Monthly)</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                <div class="mt-2 mb-0 text-muted text-xs">
+                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                    <span>Since last month</span>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-calendar fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Earnings (Annual) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                                <div class="mt-2 mb-0 text-muted text-xs">
+                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                                    <span>Since last years</span>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- New User Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                                <div class="mt-2 mb-0 text-muted text-xs">
+                                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                                    <span>Since last month</span>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-users fa-2x text-info"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                <div class="mt-2 mb-0 text-muted text-xs">
+                                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                                    <span>Since yesterday</span>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-comments fa-2x text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

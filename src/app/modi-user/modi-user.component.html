@@ -1,12 +1,37 @@
-<app-menu></app-menu>
-<input type="text" [(ngModel)]="query" class="form-control search" placeholder="rechercher par username">
-<div class="ang mt-3">
-    <div class="userToModi" *ngFor="let user of users| filter:query| paginate: { itemsPerPage: 6, currentPage: p } ">
-        <img [src]="getImage(user)" class="image">
-        <mat-slide-toggle [(ngModel)]="isActive" class="bg-light" color="green"></mat-slide-toggle>
-        <span class="isActive">{{ getIsActive(user) }}</span>
-        <h4>{{ user.prenom }}--{{ user.nom }}</h4>
-        <h6>@{{ user.username}}</h6>
+<div class="row contenu">
+    <!-- Datatables -->
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Utilisateurs</h6>
+            </div>
+            <div class="table-responsive p-3">
+                <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Profil</th>
+                            <th>Prenom </th>
+                            <th>Nom</th>
+                            <th>Username</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let user of users| filter:query| paginate: { itemsPerPage: 6, currentPage: p } ">
+                        <tr>
+                            <img [src]="getImage(user)">
+                            <td>{{ user.prenom }}</td>
+                            <td>{{ user.nom }}</td>
+                            <td>{{ user.nom }}</td>
+                            <td>
+                                <mat-slide-toggle (change)="change(user.id,user.isActive)" [(ngModel)]="user.isActive" class="bg-light" color="green"><span class="badge badge-success p-2" *ngIf="user.isActive == true ">Activé</span><span class="badge badge-danger p-2" *ngIf="user.isActive == false ">Déactivé</span></mat-slide-toggle>
+                            </td>
+                            <td><button class="btn btn-primary" [routerLink]=[user.id]>Modifier</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
 </div>
-<pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>

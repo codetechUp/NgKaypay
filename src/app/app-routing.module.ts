@@ -4,13 +4,21 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ModiUserComponent } from './modi-user/modi-user.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { UploadComponent } from './upload/upload.component';
+import { DashComponent} from './dash/dash.component';
+import { CreateAccountComponent } from './create-account/create-account.component';
 
 
 const routes: Routes = [
-  { path: 'menu', component: MenuComponent },
+  { path: 'dash', component: DashComponent},
   { path: 'liste', component: ModiUserComponent },
   { path: 'adduser', component: AddUserComponent },
-  { path: 'login', component: LoginComponent }];
+  { path: 'login', component: LoginComponent },
+  { path: 'liste/:id', component: UserPageComponent },
+  { path: 'upload', component: UploadComponent },
+  { path: 'newcompte', component: CreateAccountComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

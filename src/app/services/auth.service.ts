@@ -32,5 +32,6 @@ idUser:number;
   }
   logout(){
     localStorage.removeItem("token");
+    localStorage.removeItem("auth");
   }
 }

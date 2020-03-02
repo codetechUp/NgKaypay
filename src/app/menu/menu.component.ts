@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,28 +13,47 @@ export class MenuComponent implements OnInit {
     prenom:string;
   thumbnail;
   nom:string;
+  username:string;
+  user;
+  a;
 
-  constructor(private auth:AuthService,private UserService:UserService) {
+  constructor(private router:Router,private auth:AuthService,private UserService:UserService) {
    
    }
 
   ngOnInit() {
-    this.auth.getCurrentUser()
-    .subscribe(
-      data=>{
-        //recupperation de l'image
-        this.thumbnail=this.UserService.getThumbnail(data);
-       
-       this.prenom=data.nom;
-       this.nom=data.prenom;
+ if(localStorage.getItem("token")){
+  this.auth.getCurrentUser()
+  .subscribe(
+    data=>{
+      //recupperation de l'image
+      this.thumbnail=this.UserService.getThumbnail(data);
+     this.user=data;
+     this.prenom=data.nom;
+     this.nom=data.prenom;
+     this.username=data.username;
+     localStorage.setItem("username","a");
+     
 
 
-      },
-      error=>{
-        console.log(error);
+    },
+    error=>{
+      console.log(error);
+      localStorage.removeItem("auth");
 
-      }
-    )
+    }
+  )
+ }
   }
+  //Fonction permet de recupperer l'image à partir d'un USER
+  getImage(user){
+    return this.UserService.getThumbnail(user);
+  }
+  logout(){
+    this.auth.logout();
+    localStorage.clear();
+    this.router.navigateByUrl('login');
+  }  
+  
   
 }
