@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 import {map} from 'rxjs/operators'
+import { Router } from '@angular/router';
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-modi-user',
@@ -11,14 +13,16 @@ export class ModiUserComponent implements OnInit {
   users;
  query;
  isActive:boolean=true;
+ username;
  @Input() a=2;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private router :Router,private flash:FlashMessagesService) { }
 
   ngOnInit() {
     //je recuppere tout les users
-    let username=localStorage.getItem("username");
-    this.userService.getAll().pipe(map(user=>user.filter(user=>user.username!=username)))
+    this.username=localStorage.getItem("username");
+    console.log(this.username);
+    this.userService.getAll().pipe(map(user=>user.filter(user=>user.username!=this.username )))
     .subscribe(
       data => {
         console.log(data);
@@ -41,11 +45,17 @@ export class ModiUserComponent implements OnInit {
       data=>{
         this.getIsActive(data);
         console.log(data);
+        this.flash.show("vous avez modifié le status de l'utilisateur", { timeout: 2000 ,cssClass: 'alert-success'});
+       
+        
+       
+
       }
     )
   }
   getIsActive(user){
     let active=user.isActive;
+    this.isActive=user.isActive;
     if(active === true){
       return  "Déactivé";
     }else{

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,12 @@ export class CompteService {
   constructor(private httpClient:HttpClient) { }
 
   create(compte){
-    return this.httpClient.post<any>(`http://127.0.0.1:8000/api/comptes`, compte);
+    return this.httpClient.post<any>(`${environment.url}/api/comptes`, compte);
   }
-  login(username:string,password:string){
-    return this.httpClient.post<any>(`http://127.0.0.1:8000/api/login_check`, { username, password })
-
-
+  searchByNinea(ninea){
+    return this.httpClient.get<any>(`${environment.url}/api/comptes?partenaire.ninea=${ninea}`)
+  }
+  getCompte(){
+    return this.httpClient.get<any>(`${environment.url}/api/comptes/partenaire`);
   }
 }

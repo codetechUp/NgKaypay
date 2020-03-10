@@ -11,7 +11,6 @@ export class DashComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
-    localStorage.setItem("auth","1");
   }
 
 }

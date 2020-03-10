@@ -2,6 +2,8 @@
 <div class="container-login">
     <div class="row justify-content-center">
         <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="alert alert-danger" *ngIf="error">{{ error }}</div>
+            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '50px' }"></ngx-loading>
             <div class="card shadow-sm my-5">
                 <div class="card-body p-0">
                     <div class="row">

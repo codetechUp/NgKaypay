@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'NgKayPay';
-  auth=localStorage.getItem('auth');
+  user=localStorage.getItem('token');
 }
 

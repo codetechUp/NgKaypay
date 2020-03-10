@@ -1,0 +1,52 @@
+<app-menu></app-menu>
+<div class="row contenu">
+    <!-- Datatables -->
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <flash-messages></flash-messages>
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">La période d'affectations<span class="badge badge-pill badge-primary">Étape finale</span></h6>
+            </div>
+            <div class="table-responsive p-3">
+                <table class="table align-items-center table-flush" id="dataTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Date Début</th>
+                            <th>Date Fin</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Chosir date debut</mat-label>
+                                    <input matInput name="debut" [(ngModel)]='debut' [matDatepicker]="datedebut">
+                                    <mat-datepicker-toggle matSuffix [for]="datedebut">
+                                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #datedebut></mat-datepicker>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Chosir date fin</mat-label>
+                                    <input matInput name="fin" [(ngModel)]='fin' [matDatepicker]="picker">
+                                    <mat-datepicker-toggle matSuffix [for]="picker">
+                                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                                    </mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </td>
+                            <td><button name="" (click)="affecter()" class="btn btn-primary">Affecter</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
+
+
+
+</div>

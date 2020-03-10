@@ -44,13 +44,13 @@ export class AddUserComponent implements OnInit {
     //Je change la valeur de id role en iri c-a-d ∕api∕roles/{id}
     console.log(this.registerForm.value.role);
     this.registerForm.value.role=`${this.iri}${this.f.role.value}`;
-
+    console.log(this.registerForm.value)
     //Je creer le nouveau utilisateur
       this.UserService.register(this.registerForm.value)
       .subscribe(
         data=>{
           console.log(data);
-          this.router.navigateByUrl("modiuser");
+          this.router.navigateByUrl("/dash");
         },
         error=>{
           console.log(error);

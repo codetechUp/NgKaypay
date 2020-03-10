@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from '../services/user.service';
@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   username:string;
   user;
   a;
+@Input() query;
 
   constructor(private router:Router,private auth:AuthService,private UserService:UserService) {
    
@@ -32,7 +33,7 @@ export class MenuComponent implements OnInit {
      this.prenom=data.nom;
      this.nom=data.prenom;
      this.username=data.username;
-     localStorage.setItem("username","a");
+     localStorage.setItem("username",this.username);
      
 
 

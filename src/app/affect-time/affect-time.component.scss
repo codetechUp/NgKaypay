@@ -1,0 +1,33 @@
+img {
+    width: 77px;
+    height: 77px;
+    border-radius: 50%;
+}
+
+.contenu {
+    position: absolute;
+    top: 135px;
+    left: 25%;
+    width: 66%;
+    margin-bottom: 120px;
+    ;
+}
+
+td {
+    padding-top: 10px;
+    ;
+}
+
+pagination-controls {
+    position: relative;
+    left: 41%;
+}
+
+mat-datepicker,
+mat-datepicker-toggle,
+mat-icon,
+input,
+mat-label,
+mat-form-field {
+    color: black!important;
+}

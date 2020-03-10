@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user.models';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
 
 
 @Injectable({
@@ -14,21 +15,21 @@ export class UserService {
 
 
   register(user){
-    return this.httpClient.post<User>(`http://127.0.0.1:8000/api/users`,user);
+    return this.httpClient.post<User>(`${environment.url}/api/users`,user);
 
   }
   upload(image,id){
     let headers = new HttpHeaders(); 
     //headers = headers.set('Content-Type', 'multipart/form-data');
    // headers = headers.set('Accept', 'application/json');
-    return this.httpClient.post<User>(`http://127.0.0.1:8000/api/users/image/${id}`,image);
+    return this.httpClient.post<User>(`${environment.url}/api/users/image/${id}`,image);
 
   }
   modiUser(user,id){
-    return this.httpClient.put<any>(`http://127.0.0.1:8000/api/users/${id}`,user);
+    return this.httpClient.put<any>(`${environment.url}/api/users/${id}`,user);
   }
   getAll(){
-    return this.httpClient.get<any>(`http://127.0.0.1:8000/api/users.json`);
+    return this.httpClient.get<any>(`${environment.url}/api/users.json`);
   }
   getThumbnail(data){
     if(data.image ){
@@ -43,11 +44,11 @@ export class UserService {
   }
   bloquer(id,status){
    
-    return this.httpClient.put<any>(`http://127.0.0.1:8000/api/users/${id}`,{ "isActive": status});
+    return this.httpClient.put<any>(`${environment.url}/api/users/${id}`,{ "isActive": status});
 
 
   }
   getUserById(id){
-    return this.httpClient.get<User>(`http://127.0.0.1:8000/api/users/${id}.json`)
+    return this.httpClient.get<User>(`${environment.url}/api/users/${id}.json`)
   }
 }

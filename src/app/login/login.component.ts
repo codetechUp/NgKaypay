@@ -12,6 +12,7 @@ import {  FlashMessagesService } from 'angular2-flash-messages';
 export class LoginComponent implements OnInit {
   loginForm:FormGroup;
   error:string;
+  public loading = false;
 
 
 
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 
 
   onSubmit(){
-
+    this.loading=true;
   this.auth.login(this.f.username.value,this.f.password.value)
    .subscribe(
      data=>{
@@ -37,12 +38,12 @@ export class LoginComponent implements OnInit {
        localStorage.setItem("token",data.token);
        localStorage.setItem("auth","1");
       this.ndm.navigateByUrl("/dash");
-      this.flash.show('vous etes Connecté!', { cssClass: 'alert-success', timeout: 3000 });
-
+      setTimeout(() => { this.loading = false; }, 7000);
      },
-     error=>{
+     error=>{ 
 
       this.error=error.error.message;
+      this.loading = false;
 
      }
    );

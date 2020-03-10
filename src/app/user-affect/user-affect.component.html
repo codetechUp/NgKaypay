@@ -5,7 +5,7 @@
         <div class="card mb-4">
             <flash-messages></flash-messages>
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Utilisateurs</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Sélectionner l'utilisateur<span class="badge badge-pill badge-primary">deuxiéme étape</span></h6>
             </div>
             <div class="table-responsive p-3">
                 <table class="table align-items-center table-flush" id="dataTable">
@@ -14,8 +14,6 @@
                             <th>Profil</th>
                             <th>Prenom </th>
                             <th>Nom</th>
-                            <th>Username</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -24,11 +22,7 @@
                             <img [src]="getImage(user)">
                             <td>{{ user.prenom }}</td>
                             <td>{{ user.nom }}</td>
-                            <td>{{ user.nom }}</td>
-                            <td>
-                                <mat-slide-toggle (change)="change(user.id,user.isActive)" [(ngModel)]="user.isActive" class="bg-light" color="green"><span class="badge badge-success p-2" *ngIf="user.isActive == true ">Activé</span><span class="badge badge-danger p-2" *ngIf="user.isActive == false ">Déactivé</span></mat-slide-toggle>
-                            </td>
-                            <td><button class="btn btn-primary" [routerLink]=[user.id]>Modifier</button></td>
+                            <td><button name="" (click)="affecter(user.id)" class="btn btn-primary">Suivant</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -36,4 +30,7 @@
         </div>
     </div>
     <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
+
+
+
 </div>
