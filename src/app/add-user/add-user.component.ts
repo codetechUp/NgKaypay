@@ -5,6 +5,7 @@ import { RoleService } from '../services/role.service';
 import { filter ,map} from 'rxjs/operators';
 import { User } from '../models/user.models';
 import { Router } from '@angular/router';
+import { FlashMessagesService } from 'angular2-flash-messages';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AddUserComponent implements OnInit {
   role;
   iri=`/api/roles/`;
 
-  constructor(private roles:RoleService,private router:Router,private UserService:UserService) { }
+  constructor(private roles:RoleService,private router:Router,private UserService:UserService,private flash:FlashMessagesService) { }
 
   ngOnInit() {
     //Au chargement de la Je recuppere les roles
@@ -51,6 +52,8 @@ export class AddUserComponent implements OnInit {
         data=>{
           console.log(data);
           this.router.navigateByUrl("/dash");
+          this.flash.show("vous avez modifié le status de l'utilisateur", { timeout: 7000 ,cssClass: 'alert-success'});
+       
         },
         error=>{
           console.log(error);

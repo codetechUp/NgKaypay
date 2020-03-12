@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import {map} from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
+import { RoleService } from '../services/role.service';
 
 @Component({
   selector: 'app-modi-user',
@@ -16,12 +17,13 @@ export class ModiUserComponent implements OnInit {
  username;
  @Input() a=2;
 
-  constructor(private userService:UserService,private router :Router,private flash:FlashMessagesService) { }
+  constructor(private userService:UserService,private router :Router,private flash:FlashMessagesService,private role:RoleService) { }
 
   ngOnInit() {
     //je recuppere tout les users
     this.username=localStorage.getItem("username");
     console.log(this.username);
+    
     this.userService.getAll().pipe(map(user=>user.filter(user=>user.username!=this.username )))
     .subscribe(
       data => {
@@ -62,6 +64,10 @@ export class ModiUserComponent implements OnInit {
       return  "Activé";
     }
 
+  }
+  getRoleFor(roles){
+    
+    return roles["0"];
   }
 
 }

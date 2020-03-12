@@ -23,6 +23,10 @@ export class MenuComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.auth.getRole();
+
+
+
  if(localStorage.getItem("token")){
   this.auth.getCurrentUser()
   .subscribe(
@@ -54,7 +58,19 @@ export class MenuComponent implements OnInit {
     this.auth.logout();
     localStorage.clear();
     this.router.navigateByUrl('login');
-  }  
+  }
+  isAdmin(){
+    return ( this.auth.getRole() === 'ROLE_ADMIN_SYST' || this.auth.getRole() === 'ROLE_ADMIN')? true : false;
+  }
+  isPAdmin(){
+    return ( this.auth.getRole() === 'ROLE_PARTENAIRE' || this.auth.getRole() === 'ROLE_PADMIN')? true : false;
+  }
+  isCaissier(){
+    return ( this.auth.getRole() === 'ROLE_CAISSIER' ) ? true : false;
+  }
+  isPuser(){
+    return ( this.auth.getRole() === 'ROLE_PUSER' ) ? true : false;
+  }
   
   
 }
