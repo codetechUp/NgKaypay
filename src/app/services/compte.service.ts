@@ -18,4 +18,11 @@ export class CompteService {
   getCompte(){
     return this.httpClient.get<any>(`${environment.url}/api/comptes/partenaire`);
   }
+  searchByNumero(numro){
+    return this.httpClient.get<any>(`${environment.url}/api/comptes?numero=` + numro)
+  }
+  faireDepot(depot){
+    return this.httpClient.post<any>(`${environment.url}/api/depots`, depot);
+
+  }
 }

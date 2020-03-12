@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
  
 idUser:number;
+role;
   constructor(private httpClient:HttpClient) { }
 
 
@@ -30,6 +31,13 @@ idUser:number;
     
     return this.httpClient.get<User>(`${environment.url}/api/users/${this.idUser}.json`)
 
+  }
+  getRole(){
+    const helper = new JwtHelperService();
+    const decodedToken = helper.decodeToken(this.getToken());
+    this.role=decodedToken.roles["0"];
+    return this.role;
+    
   }
   logout(){
     localStorage.removeItem("token");

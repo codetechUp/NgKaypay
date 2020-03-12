@@ -13,4 +13,7 @@ export class RoleService {
   getRoles(){
    return this.httpClient.get<any>(`${environment.url}/api/roles.json`);
   }
+  getRole(iri){
+    return this.httpClient.get<any>(`${environment.url}${iri}.json`);
+  }
 }

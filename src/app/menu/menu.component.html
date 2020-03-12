@@ -12,33 +12,54 @@
             Dashbord
         </div>
         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/dash']">
+                <i class="fas fa-brain"></i>
+                <span>Dashbord</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item" *ngIf="isAdmin() || isPAdmin()">
             <a class="nav-link" [routerLink]="['/adduser']">
                 <i class="fa-fw fas fa-user"></i>
                 <span>Creer utilisateurs</span>
             </a>
         </li>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item">
+        <hr class="sidebar-divider my-0" *ngIf="isAdmin() || isPAdmin()">
+        <li class="nav-item" *ngIf="isAdmin() || isPAdmin()">
             <a class="nav-link" [routerLink]="['/liste']">
                 <i class="fa-fw fas fa-users-cog"></i>
                 <span>Modifier utilisateurs</span>
             </a>
         </li>
         <hr class="sidebar-divider my-0">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isAdmin()">
             <a class="nav-link" [routerLink]="['/newcompte']">
                 <i class="fa-fw fas fa-plus-circle"></i>
                 <span>Creer Compte Partenaire</span>
             </a>
         </li>
-        <hr class="sidebar-divider my-0">
-        <li class="nav-item">
+        <hr class="sidebar-divider my-0" *ngIf="isAdmin()">
+        <li class="nav-item" *ngIf="isPAdmin()">
             <a class="nav-link" [routerLink]="['/affect']">
                 <i class="fa-fw fas fa-plus-circle"></i>
                 <span>Affectations Comptes</span>
             </a>
         </li>
-        <hr class="sidebar-divider my-0">
+        <hr class="sidebar-divider my-0" *ngIf="isPAdmin()">
+        <li class="nav-item" *ngIf="isCaissier() || isAdmin() ">
+            <a class="nav-link" [routerLink]="['/depot']">
+                <i class="fas fa-wallet"></i>
+                <span>Faire Dépot</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider my-0" *ngIf="isCaissier()">
+        <li class="nav-item" *ngIf="isPuser()">
+            <a class="nav-link" [routerLink]="['/transaction']">
+                <i class="fas fa-money-check-alt"></i>
+                <span>Transfert Et Retrait</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider my-0" *ngIf="isPuser()">
         <div class="version" id="version-ruangadmin"></div>
     </ul>
     <div id="content-wrapper" class="d-flex flex-column">
@@ -77,7 +98,7 @@
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/login" (click)="logout()">
+                            <a class="dropdown-item" (click)="logout()">
                                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Déconnection
                             </a>
                         </div>

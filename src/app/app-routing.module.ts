@@ -12,25 +12,41 @@ import { AffectComponent } from './affect/affect.component';
 import { UserAffectComponent } from './user-affect/user-affect.component';
 import { AffectTimeComponent } from './affect-time/affect-time.component';
 import { DepotComponent } from './depot/depot.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { AuthGuard } from 'src/app/guard/auth.guard';
 
 
 const routes: Routes = [
-  { path: 'dash', component: DashComponent},
-  { path: 'liste', component: ModiUserComponent },
-  { path: 'adduser', component: AddUserComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'liste/:id', component: UserPageComponent },
-  { path: 'upload', component: UploadComponent },
-  { path: 'newcompte', component: CreateAccountComponent },
-  { path: 'menu', component: MenuComponent },
-  { path: 'affect', component: AffectComponent },
-  { path: 'userAffect', component: UserAffectComponent },
-  { path: 'time', component: AffectTimeComponent },
-  { path:'depot', component:DepotComponent}
+  { path: 'dash', component: DashComponent,canActivate:[AuthGuard]},
+
+
+  { path: 'liste',canActivate:[AuthGuard] 
+      ,children:[
+              { path: '', component: ModiUserComponent,canActivate:[AuthGuard] },
+              { path: ':id', component: UserPageComponent,canActivate:[AuthGuard] }
+  ]
+  },
+
+  { path: 'adduser', component: AddUserComponent,canActivate:[AuthGuard] },
+
+  { path: 'login', component: LoginComponent  },
+
+  { path: 'newcompte', component: CreateAccountComponent,canActivate:[AuthGuard] },
+
+  { path: 'affect', component: AffectComponent ,canActivate:[AuthGuard]},
+
+  { path: 'userAffect', component: UserAffectComponent ,canActivate:[AuthGuard]},
+
+  { path: 'time', component: AffectTimeComponent,canActivate:[AuthGuard] },
+
+  { path:'depot', component:DepotComponent,canActivate:[AuthGuard]},
+
+  { path:'transaction', component: TransactionComponent ,canActivate:[AuthGuard]} 
+  
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
-})
+}) 
 export class AppRoutingModule { }

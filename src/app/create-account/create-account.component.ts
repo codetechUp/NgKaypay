@@ -48,7 +48,10 @@ rc:string="";
   }
   onChanges(): void {
     this.form.get('partenaire.ninea').valueChanges.subscribe(val => {
-      this.getPatnerByNinea(val);
+      if(val){
+        this.getPatnerByNinea(val);
+      }
+      
     
     });
   }
